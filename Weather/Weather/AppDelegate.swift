@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func initRoot() {
         let home = ViewControllerFactory.shared.home
+        
         let root = UINavigationController(rootViewController: home as! UIViewController)
         rootViewController = root
     }
