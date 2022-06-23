@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol HomeViewControllerImp : AnyObject{
+    var presenter: HomePresenterImp? {get set}
+    func displayCurrentt(_ current: CurrentWeatherModel)
+}
+
+
 class HomeViewController: UIViewController {
+    var presenter: HomePresenterImp?
 
     
     @IBOutlet weak var iconWeather: UIImageView!
@@ -22,6 +29,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter?.presenter(for: "Dusseldorf")
+        print("---43--")
         let weather = CurrentWeather(temperature: 45, rainfall: "%35", humidity: 0.32, icon: "clear-night", location: "Battalgazi")
         let viewModel = CurrentWeatherModel(data: weather)
         showWeather(model: viewModel)
